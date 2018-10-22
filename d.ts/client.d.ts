@@ -9,7 +9,7 @@ export interface Client {
     queryFirst(q: string | string[], optionsOrCallback: QueryOptions | RequestCallback<Document>, cb: RequestCallback<Document>): Promise<Document>;
     getByID(id: string, options: QueryOptions, cb: RequestCallback<Document>): Promise<Document>;
     getByIDs(ids: string[], options: QueryOptions, cb: RequestCallback<ApiSearchResponse>): Promise<ApiSearchResponse>;
-    getByUID(type: string, uid: string, options: QueryOptions, cb: RequestCallback<Document>): Promise<Document>;
+    getByUID(type: string, uid: string, options: QueryOptions, cb: RequestCallback<Document>): Promise<Document | ApiSearchResponse>;
     getSingle(type: string, options: QueryOptions, cb: RequestCallback<Document>): Promise<Document>;
     getBookmark(bookmark: string, options: QueryOptions, cb: RequestCallback<Document>): Promise<Document>;
     previewSession(token: string, linkResolver: (doc: any) => string, defaultUrl: string, cb?: RequestCallback<string>): Promise<string>;
@@ -25,7 +25,7 @@ export declare class DefaultClient implements Client {
     queryFirst(q: string | string[], optionsOrCallback: QueryOptions | RequestCallback<Document>, cb?: RequestCallback<Document>): Promise<Document>;
     getByID(id: string, options: QueryOptions, cb?: RequestCallback<Document>): Promise<Document>;
     getByIDs(ids: string[], options: QueryOptions, cb?: RequestCallback<ApiSearchResponse>): Promise<ApiSearchResponse>;
-    getByUID(type: string, uid: string, options: QueryOptions, cb?: RequestCallback<Document>): Promise<Document>;
+    getByUID(type: string, uid: string, options: QueryOptions, cb?: RequestCallback<Document>): Promise<Document | ApiSearchResponse>;
     getSingle(type: string, options: QueryOptions, cb?: RequestCallback<Document>): Promise<Document>;
     getBookmark(bookmark: string, options: QueryOptions, cb?: RequestCallback<Document>): Promise<Document>;
     previewSession(token: string, linkResolver: (doc: any) => string, defaultUrl: string, cb?: RequestCallback<string>): Promise<string>;

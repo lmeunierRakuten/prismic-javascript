@@ -98,7 +98,7 @@ export default class ResolvedApi implements Client {
     /**
      * Retrieve the document with the given uid
      */
-    getByUID(type: string, uid: string, maybeOptions?: QueryOptions, cb?: RequestCallback<Document>): Promise<Document>;
+    getByUID(type: string, uid: string, maybeOptions?: QueryOptions, cb?: RequestCallback<Document | ApiSearchResponse>): Promise<Document | ApiSearchResponse>;
     /**
      * Retrieve the singleton document with the given type
      */
