@@ -188,14 +188,10 @@ export default class ResolvedApi implements Client {
    */
   getByUID(type: string, uid: string, maybeOptions?: QueryOptions, cb?: RequestCallback<Document | ApiSearchResponse>): Promise<Document | ApiSearchResponse> {
     const options = maybeOptions || {};
-    if (!options.lang) options.lang = '*';
+    if(options.lang === "*") throw new Error("FORDIDDEN. You can't use getByUID with *, use the predicates instead.")
     if(!options.page) options.page = 1;
 
-    return this.query(Predicates.at(`my.${type}.uid`, uid), options, cb).then(response => {
-      const docList = (response && response.results) || [];
-      if(docList.length <= 1) return docList[0];
-      else return response;
-    });
+    return this.queryFirst(Predicates.at(`my.${type}.uid`, uid), options, cb);
   }
 
   /**
